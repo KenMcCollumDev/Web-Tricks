@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery Exercise 20170718</title>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<style>
+.box {
+    width: 100px;
+    height: 100px;
+	font-size: 32px;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+h1 {
+	font-size: 48px;
+      font-weight: bold;
+}
+#box-1 {
+	color: #ff0000;
+}
+#box-2 {
+	color: #00ff00;
+}
+#box-3 {
+	color: #0000ff;
+}
+		</style>
+    </head>
+
+    <body>
+<div>
+<!--
+2.
+Create an HTML page that does the following using jQuery syntax
+a.
+There are 3 boxes (100px by 100px), of different colors
+b.
+1st box should be showing and hiding (blinking) every second (show 1 second,
+hide one second)
+c.
+2nd box should be fading in and out every 2 seconds (fade in in 2 seconds, fade
+out in 2 seconds)
+
+d.
+3rd box should slide in and out every 4 seconds (slide in in 4 seconds, slide out
+in 4 seconds) -->
+		
+<div id="target"><h1>FADING</h1></div>
+
+<script>
+	$(function(){
+		for (var counter = 3; counter >= 1; counter --){
+			var divvies = '<div id="box-' + counter + '" class="box">Fading</div>';
+			$('#target').append(divvies);
+			}
+			fadeIn(1000,"#box-1");
+			fadeIn(2000,"#box-2");
+			fadeIn(4000,"#box-3");
+		})
+
+function fadeOut(time, target){
+		$(target).fadeOut(time,
+						  function() { fadeIn(time,target); }
+                          )
+
+	}
+function fadeIn(time, target){
+		$(target).fadeIn(time,
+						 function() { fadeOut(time,target); }
+						 )
+	}
+
+</script>
+
+    <body>
+</html>
+
+
